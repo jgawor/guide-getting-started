@@ -6,5 +6,5 @@
 1. Install Kubernetes & CRI-O
 1. Deploy & configure Knative Sering using [knative-deploy.sh](./knative-deploy.sh). The `config-features` ConfigMap is required to enable setting security context properties for a Knative service. The `config-autoscaler` ConfigMap settings are optional but set to speed up scaling to zero.
 1. Deploy Liberty Knative services and set up port formating using [knative-services.sh](./knative-services.sh). Wait until Liberty pods scale to zero.
-1. Invoke the base Knative service using [invoke-og.sh](./invoke-og.sh].
-1. Invoke the instanton Knative service using [invoke-instanton.sh](./invoke-instanon.sh).
+1. Invoke the base Knative service using [invoke-og.sh](./invoke-og.sh).
+1. Invoke the instanton Knative service using [invoke-instanton.sh](./invoke-instanton.sh).
