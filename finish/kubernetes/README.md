@@ -1,6 +1,8 @@
 ## Kubernetes
 
-1. Using https://fyre.ibm.com/embers get RedHat 9.0 VM.
+### One time setup
+
+1. Using https://fyre.ibm.com/embers get RedHat 9.0 VM (4 core or greater)
 1. Login to the VM and clone this repository.
    ```
    git clone -b instanton https://github.com/jgawor/guide-getting-started.git
@@ -10,13 +12,22 @@
    cd guide-getting-started/finish/kubernetes
    ./vm-setup.sh
    ```
+1. Reboot the VM
+   ```
+   reboot
+   ```
+
+### Running the app
+
+Login to the VM and start Kuberentes in one terminal window.
+
 1. Start Kubernetes
    ```
    cd guide-getting-started/finish/kubernetes
    ./start-kube.sh
    ```
 
-In another window.
+Login to the VM in another window and run the app.
 
 1. Check coredns pod is running.
    ```
@@ -28,7 +39,7 @@ In another window.
    cd guide-getting-started/finish/knative
    ./knative-deploy.sh
    ```
-1. Ensure all Knative pods are running.
+1. Ensure all Knative pods are running and are ready.
    ```
    kubectl get pod -A
    ```
