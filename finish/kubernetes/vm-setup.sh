@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y git libassuan libgpg-error libgpg-error-devel glib2-devel glibc-devel runc conmon skopeo
+yum install -y libassuan libgpg-error libgpg-error-devel glib2-devel glibc-devel runc conmon skopeo
 
 mkdir $HOME/software
 
