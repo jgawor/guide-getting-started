@@ -18,6 +18,7 @@ cd $HOME/software
 git clone -b release-1.24 https://github.com/cri-o/cri-o.git
 cd cri-o
 sed "s|-static||" -i pinns/Makefile
+mkdir -p /etc/cni/net.d/
 cp contrib/cni/11-crio-ipv4-bridge.conf /etc/cni/net.d/
 make
 make install
@@ -40,7 +41,6 @@ cd $HOME/go/src/k8s.io
 git clone -b release-1.24 https://github.com/kubernetes/kubernetes.git
 cd kubernetes
 make
-cp 
 
 
 wget -O /usr/local/bin/cfssl https://github.com/cloudflare/cfssl/releases/download/v1.6.2/cfssl_1.6.2_linux_amd64
