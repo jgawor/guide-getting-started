@@ -2,6 +2,10 @@
 
 yum install -y libassuan libgpg-error libgpg-error-devel glib2-devel glibc-devel runc conmon skopeo
 
+systemctl enable firewalld
+systemctl start firewalld
+firewall-cmd --add-masquerade --permanent
+
 mkdir $HOME/software
 
 cd $HOME/software/
@@ -51,6 +55,3 @@ $HOME/go/src/k8s.io/kubernetes/hack/install-etcd.sh
 
 cp $HOME/go/src/k8s.io/kubernetes/_output/bin/kubectl /usr/local/bin
 
-systemctl enable firewalld
-systemctl start firewalld
-firewall-cmd --add-masquerade --permanent

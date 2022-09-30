@@ -37,7 +37,7 @@ In another window.
    cd guide-getting-started/finish/knative
    ./knative-services.sh
    ```
-1, Verify that Liberty pods scale to zero.
+1. Verify that Liberty pods scale to zero.
    ```
    kubectl get pod
    ```
