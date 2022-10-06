@@ -24,7 +24,7 @@ Login to the VM and start Kuberentes in one terminal window.
 1. Start Kubernetes
    ```
    cd guide-getting-started/finish/kubernetes
-   ./start-kube.sh
+   ./start-kube.sh &
    ```
 
 Login to the VM in another window and run the app.
@@ -43,7 +43,7 @@ Login to the VM in another window and run the app.
    ```
    kubectl get pod -A
    ```
-1. Deploy Liberty Knative services and set up port formating.
+1. Deploy Liberty Knative services and set up port forwarding.
    ```
    cd guide-getting-started/finish/knative
    ./knative-services.sh
