@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASEDIR=$(dirname "$0")
+
 yum install -y runc conmon skopeo
 
 systemctl enable firewalld
@@ -17,9 +19,11 @@ export PATH=$HOME/software/go/bin:$PATH
 CONTAINER_RUNTIME="${1:-crio}"
 
 if [ "$CONTAINER_RUNTIME" = "crio" ]; then
-    source ./crio-setup.sh
+    echo "Configuring with CRI-O"
+    source $BASEDIR/crio-setup.sh
 elif [ "$CONTAINER_RUNTIME" = "containerd" ]; then
-    source ./containerd-setup.sh
+    echo "Configuring with containerd"
+    source $BASEDIR/containerd-setup.sh
 else
     echo "Unsupported container runtime: $CONTAINER_RUNTIME"
     exit 1
