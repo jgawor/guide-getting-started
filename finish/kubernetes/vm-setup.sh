@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname "$0")
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 yum install -y runc conmon skopeo
 
@@ -8,7 +8,7 @@ systemctl enable firewalld
 systemctl start firewalld
 firewall-cmd --add-masquerade --permanent
 
-mkdir $HOME/software
+mkdir -p $HOME/software
 
 cd $HOME/software/
 wget https://go.dev/dl/go1.18.6.linux-amd64.tar.gz
