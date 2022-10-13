@@ -27,7 +27,7 @@ elif [ -S "/run/containerd/containerd.sock" ]; then
     echo "Using containerd"
     export CONTAINER_RUNTIME_ENDPOINT="/run/containerd/containerd.sock"
 else
-    echo "Container runtime is not detected."
+    echo "Container runtime socket is not detected."
     exit 1
 fi
 

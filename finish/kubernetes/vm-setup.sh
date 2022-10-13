@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y libassuan libgpg-error libgpg-error-devel glib2-devel glibc-devel runc conmon skopeo
+yum install -y runc conmon skopeo
 
 systemctl enable firewalld
 systemctl start firewalld
@@ -12,24 +12,18 @@ cd $HOME/software/
 wget https://go.dev/dl/go1.18.6.linux-amd64.tar.gz
 tar xvf go1.18.6.linux-amd64.tar.gz
 
-
 export PATH=$HOME/software/go/bin:$PATH
 
-rpm -i http://mirror.stream.centos.org/9-stream/CRB/x86_64/os/Packages/libassuan-devel-2.5.5-3.el9.x86_64.rpm
-rpm -i http://mirror.stream.centos.org/9-stream/CRB/x86_64/os/Packages/gpgme-devel-1.15.1-6.el9.x86_64.rpm
+CONTAINER_RUNTIME="${1:-crio}"
 
-cd $HOME/software
-git clone -b release-1.24 https://github.com/cri-o/cri-o.git
-cd cri-o
-sed "s|-static||" -i pinns/Makefile
-mkdir -p /etc/cni/net.d/
-cp contrib/cni/11-crio-ipv4-bridge.conf /etc/cni/net.d/
-make
-make install
-make install.systemd
-systemctl daemon-reload
-systemctl enable crio
-systemctl start crio
+if [ "$CONTAINER_RUNTIME" = "crio" ]; then
+    source ./crio-setup.sh
+elif [ "$CONTAINER_RUNTIME" = "containerd" ]; then
+    source ./containerd-setup.sh
+else
+    echo "Unsupported container runtime: $CONTAINER_RUNTIME"
+    exit 1
+fi
 
 
 cd $HOME/software
@@ -37,6 +31,7 @@ git clone https://github.com/containernetworking/plugins
 cd plugins
 git checkout v1.1.1
 ./build_linux.sh
+mkdir -p /opt/cni/bin/
 cp bin/bridge bin/host-local bin/loopback bin/portmap /opt/cni/bin/
 
 
