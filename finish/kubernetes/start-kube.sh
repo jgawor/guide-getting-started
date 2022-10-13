@@ -20,10 +20,10 @@ export ENABLE_HOSTPATH_PROVISIONER=true
 export KUBE_ENABLE_CLUSTER_DASHBOARD=true
 export LOG_LEVEL=4
 
-if [ -f "/var/run/crio/crio.sock" ]; then
+if [ -S "/var/run/crio/crio.sock" ]; then
     echo "Using CRI-O"
     export CONTAINER_RUNTIME_ENDPOINT="/var/run/crio/crio.sock"
-elif [ -f "/run/containerd/containerd.sock" ]; then
+elif [ -S "/run/containerd/containerd.sock" ]; then
     echo "Using containerd"
     export CONTAINER_RUNTIME_ENDPOINT="/run/containerd/containerd.sock"
 else
