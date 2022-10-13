@@ -7,7 +7,7 @@
    ```
    git clone -b instanton https://github.com/jgawor/guide-getting-started.git
    ```
-1. Run the `vm-setup.sh` script to install Kubernetes.
+1. Run the `vm-setup.sh` script to install Kubernetes. By default, the `cri-o` container runtime will be used. To use the `containerd` runtime, run `vm-setup.sh containerd` instead.
    ```
    cd guide-getting-started/finish/kubernetes
    ./vm-setup.sh
