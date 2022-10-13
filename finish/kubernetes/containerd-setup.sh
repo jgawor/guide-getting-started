@@ -9,10 +9,7 @@ mkdir -p /usr/local/lib/systemd/system/
 wget -O /usr/local/lib/systemd/system/containerd.service https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
 
 mkdir -p /etc/containerd
-containerd config default > /etc/containerd/config.toml
-
-systemctl daemon-reload
-systemctl enable --now containerd
+containerd config default | sed "s|SystemdCgroup = false|SystemdCgroup = true|" > /etc/containerd/config.toml
 
 mkdir -p /etc/cni/net.d/
 cat << EOF | tee /etc/cni/net.d/10-containerd-net.conflist
@@ -45,3 +42,6 @@ cat << EOF | tee /etc/cni/net.d/10-containerd-net.conflist
  ]
 }
 EOF
+
+systemctl daemon-reload
+systemctl enable --now containerd
