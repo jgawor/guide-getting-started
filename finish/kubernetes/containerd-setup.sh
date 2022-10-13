@@ -8,8 +8,10 @@ rm containerd-1.6.8-linux-amd64.tar.gz
 mkdir -p /usr/local/lib/systemd/system/
 wget -O /usr/local/lib/systemd/system/containerd.service https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
 
+systemctl daemon-reload
+systemctl enable --now containerd
+
 mkdir -p /etc/containerd
 containerd config default > /etc/containerd/config.toml
 
-systemctl daemon-reload
-systemctl enable --now containerd
+systemctl restart containerd
