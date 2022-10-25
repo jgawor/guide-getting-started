@@ -34,7 +34,11 @@ fi
 # export KUBELET_RESOLV_CONF=
 
 cd $K8REPO
-./hack/local-up-cluster.sh
+if [ -d "./_output/local/bin/linux/amd64/" ]; then
+    ./hack/local-up-cluster.sh -o _output/local/bin/linux/amd64/
+else
+    ./hack/local-up-cluster.sh
+fi
 
 # rm -f /tmp/kube*
 # rm -rf /var/run/kubernetes/
