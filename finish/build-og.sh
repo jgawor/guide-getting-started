@@ -1,3 +1,3 @@
 #!/bin/bash
 
-podman build -t getting-started .
+podman build -t dev.local/getting-started .

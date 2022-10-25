@@ -2,4 +2,4 @@
 
 podman run \
     --rm -p 9080:9080 \
-    getting-started
+    dev.local/getting-started

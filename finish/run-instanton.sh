@@ -6,4 +6,4 @@ podman run \
     --cap-add=NET_ADMIN \
     --cap-add=SYS_PTRACE \
     -v /proc/sys/kernel/ns_last_pid:/proc/sys/kernel/ns_last_pid \
-    getting-started-instanton
+    dev.local/getting-started-instanton

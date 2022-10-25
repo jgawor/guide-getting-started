@@ -9,7 +9,7 @@ spec:
         app.kubernetes.io/instance: open-liberty-instanton
     spec:
       containers:
-      - image: docker.io/jgawor/jconf-demo-instanton
+      - image: docker.io/jgawor/getting-started-instanton
         imagePullPolicy: IfNotPresent
         name: app
         ports:

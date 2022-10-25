@@ -36,7 +36,7 @@ cd plugins
 git checkout v1.1.1
 ./build_linux.sh
 mkdir -p /opt/cni/bin/
-cp bin/bridge bin/host-local bin/loopback bin/portmap /opt/cni/bin/
+cp bin/bridge bin/host-local bin/loopback bin/portmap bin/tuning bin/firewall /opt/cni/bin/
 
 
 mkdir -p $HOME/go/src/k8s.io
