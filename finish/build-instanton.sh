@@ -1,12 +1,12 @@
 #!/bin/bash
 
-CONTAINER=jconf-demo-tmp
+CONTAINER=getting-started-checkpoint
 set -x
 
-podman run --name $CONTAINER --privileged --env WLP_CHECKPOINT=applications jconf-demo
+podman run --name $CONTAINER --privileged --env WLP_CHECKPOINT=applications getting-started
 
 
-podman commit $CONTAINER jconf-demo-instanton
+podman commit $CONTAINER getting-started-instanton
 
 
 podman rm $CONTAINER

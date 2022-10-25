@@ -1,5 +1,5 @@
 #!/bin/bash
 
-podman tag jconf-demo docker.io/jgawor/jconf-demo
-podman push docker.io/jgawor/jconf-demo
+podman tag getting-started docker.io/jgawor/getting-started
+podman push docker.io/jgawor/getting-started
 

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-podman build -t jconf-demo .
+podman build -t getting-started .
