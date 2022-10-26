@@ -15,7 +15,7 @@ function displayMetrics() {
 }
 
 function getSystemMetrics() {
-    var url = "http://localhost:9080/metrics";
+    var url = location.origin + "/metrics";
     var req = new XMLHttpRequest();
 
     var metricToDisplay = {};
@@ -91,7 +91,7 @@ function getSystemPropertiesRequest() {
     var propToDisplay = ["java.vendor", "java.version", "user.name",
                          "os.name", "wlp.install.dir", "wlp.server.name" ];
     // tag::jsUrl[]
-    var url = "http://localhost:9080/dev/system/properties";
+    var url = location.origin + "/dev/system/properties";
     // end::jsUrl[]
     var req = new XMLHttpRequest();
     var table = document.getElementById("systemPropertiesTable");
@@ -137,7 +137,7 @@ function displayHealth() {
 }
 
 function getHealth() {
-    var url = "http://localhost:9080/health";
+    var url = location.origin + "/health";
     var req = new XMLHttpRequest();
 
     var healthBox = document.getElementById("healthBox");
@@ -179,7 +179,7 @@ function displayConfigProperties() {
 }
 
 function getConfigPropertiesRequest() {
-    var url = "http://localhost:9080/config";
+    var url = location.origin + "/config";
     var req = new XMLHttpRequest();
 
     var configToDisplay = {};

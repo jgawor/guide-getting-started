@@ -1,0 +1,34 @@
+apiVersion: liberty.websphere.ibm.com/v1
+kind: WebSphereLibertyApplication
+metadata:
+  name: open-liberty-instanton-wlo
+spec:
+  applicationImage: docker.io/jgawor/getting-started-instanton
+  applicationName: open-liberty-instanton-wlo
+  expose: true
+  license:
+    accept: true
+    edition: IBM WebSphere Application Server
+    metric: Processor Value Unit (PVU)
+    productEntitlementSource: Standalone
+  manageTLS: false
+  pullPolicy: IfNotPresent
+  replicas: 1
+  env:
+  - name: CRIU_EXTRA_ARGS
+    value: "--skip-file-rwx-check"  
+  resources:
+    limits:
+      cpu: 1
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 256Mi
+  securityContext:
+    allowPrivilegeEscalation: true
+    privileged: true
+    runAsNonRoot: false
+    runAsUser: 0  
+  service:
+    port: 9080
+    type: LoadBalancer
