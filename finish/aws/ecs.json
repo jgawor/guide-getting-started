@@ -12,13 +12,6 @@
           "value": "--skip-file-rwx-check"
         }
       ],
-      "linuxParameters": {
-        "capabilities": {
-          "add": [
-            "ALL"
-          ]
-        }
-      },
       "privileged": true,
       "user": "0",
       "portMappings": [
