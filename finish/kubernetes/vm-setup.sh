@@ -2,7 +2,7 @@
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-yum install -y runc conmon skopeo
+yum install -y make gcc runc conmon skopeo
 
 systemctl enable firewalld
 systemctl start firewalld
