@@ -43,7 +43,7 @@ Login to the VM in another window and run the app.
    ```
    kubectl get pod -A
    ```
-1. Deploy Liberty Knative services and set up port forwarding. If you built the container images locally invoke the command with the "dev.local" argument.
+1. Deploy Liberty Knative services and set up port forwarding. If you built the container images locally invoke the command with the `dev.local` argument.
    ```
    cd guide-getting-started/finish/knative
    ./knative-services.sh
