@@ -19,6 +19,13 @@
 
 ### Running the app
 
+Update the `/etc/containers/policy.json` file to not have the `keyPaths` entry:
+1. Make the following change
+   ```
+   -                     "keyPaths": ["/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release", "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-beta"]
+   +                     "keyPath": "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+   ```
+
 Login to the VM and start Kuberentes in one terminal window.
 
 1. Start Kubernetes
