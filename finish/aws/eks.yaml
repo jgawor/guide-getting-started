@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: open-liberty
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-liberty-instanton
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: open-liberty-instanton
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: open-liberty-instanton
+    spec:
+      containers:
+      - image: docker.io/jgawor/getting-started-instanton
+        imagePullPolicy: IfNotPresent
+        name: app
+        ports:
+        - containerPort: 9080
+          name: 9080-tcp
+          protocol: TCP
+        env:
+        - name: CRIU_EXTRA_ARGS
+          value: "--skip-file-rwx-check"
+        resources:
+          limits:
+            cpu: 1
+            memory: 512Mi
+          requests:
+            cpu: 500m
+            memory: 256Mi
+        securityContext:
+          privileged: true
+          runAsUser: 0
+      serviceAccount: open-liberty
+      serviceAccountName: open-liberty
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-liberty-instanton
+spec:
+  ports:
+  - name: https
+    port: 9080
+    protocol: TCP
+    targetPort: 9080
+  selector:
+    app.kubernetes.io/instance: open-liberty-instanton
+  type: LoadBalancer  

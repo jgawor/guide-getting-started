@@ -1,0 +1,27 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "liberty",
+      "image": "docker.io/jgawor/getting-started-instanton",
+      "cpu": 100,
+      "memory": 256,
+      "essential": true,
+      "environment": [
+        {
+          "name": "CRIU_EXTRA_ARGS",
+          "value": "--skip-file-rwx-check"
+        }
+      ],
+      "privileged": true,
+      "user": "0",
+      "portMappings": [
+        {
+          "containerPort": 9080,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "family": "liberty"
+}
